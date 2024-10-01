@@ -1,0 +1,5 @@
+{
+    "UPLOAD_FOLDER": "/path/to/shared_files",
+    "SECRET_KEY": "your_secret_key"
+  }
+  
