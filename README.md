@@ -6,22 +6,22 @@ A simple yet useful implementation to have a NAS in your house, just follow the 
 
 Reclaim your data, reclaim your freedom.
 
-##Installation
+Installation
 
-**Clone the repo with:
+Clone the repo with:
 ```bash
 git clone https://github.com/0xChrunch/CrappyNas.git
 ```
-**Open the directory:
+Open the directory:
 ```bash
 cd CrappyNas
 ```
-**Run the script for the installation:
+Run the script for the installation:
 follow all the step to set up the nas properly!
 ```bash
 chmod +x install.sh
 ./install.sh
 ```
-**Usage:
+Usage:
 once the installation is completed you can now access the interface here: http://{host pc IP}:5000
 You will be asked to set up a password the first time you open up the page, once you finish with that you can now enjoy your data in total privacy 😎
