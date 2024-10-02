@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login - NAS Casalingo</title>
-    <!-- Bootstrap CSS -->
+    <title>Login - CrappyNas</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- Il tuo CSS personalizzato -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="container mt-5">
-        <h1>Accedi</h1>
+        <h1>Login</h1>
         {% if error %}
         <div class="alert alert-danger">{{ error }}</div>
         {% endif %}
@@ -18,7 +16,7 @@
                 <label for="password">Password:</label>
                 <input type="password" name="password" placeholder="Password" class="form-control" required>
             </div>
-            <button type="submit" class="btn btn-primary">Accedi</button>
+            <button type="submit" class="btn btn-primary">Login</button>
         </form>
     </div>
 </body>
