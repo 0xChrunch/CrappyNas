@@ -39,10 +39,10 @@ pip install -r requirements.txt
 deactivate
 
 # Create systemd service file
-SERVICE_FILE="/etc/systemd/system/nasapp.service"
+SERVICE_FILE="/etc/systemd/system/crappynas.service"
 sudo bash -c "cat > $SERVICE_FILE" <<EOL
 [Unit]
-Description=NAS Flask Application
+Description=CrappyNas Flask Application
 After=network.target
 
 [Service]
@@ -59,8 +59,8 @@ EOL
 sudo systemctl daemon-reload
 
 # Enable and start the service
-sudo systemctl enable nasapp.service
-sudo systemctl start nasapp.service
+sudo systemctl enable crappynas.service
+sudo systemctl start crappynas.service
 
-echo "Installation complete. The NAS application is running and set to start on boot."
+echo "Installation complete. The CrappyNas application is running and set to start on boot."
 echo "You can access it at http://$(hostname -I | awk '{print $1}'):5000"
