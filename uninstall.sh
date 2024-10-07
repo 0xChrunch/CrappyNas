@@ -5,14 +5,15 @@ if [ ! -f "app.py" ]; then
     echo "Please run this script from the CrappyNas installation directory."
     exit 1
 fi
+
 echo "Stopping the CrappyNas service..."
-sudo systemctl stop nasapp.service
+sudo systemctl stop crappynas.service
 
 echo "Disabling the CrappyNas service..."
-sudo systemctl disable nasapp.service
+sudo systemctl disable crappynas.service
 
 echo "Removing the systemd service file..."
-sudo rm -f /etc/systemd/system/nasapp.service
+sudo rm -f /etc/systemd/system/crappynas.service
 sudo systemctl daemon-reload
 
 echo "crying a little bit..."
@@ -29,10 +30,10 @@ if [[ "$remove_shared_dir" =~ ^[Yy]$ ]]; then
         echo "Deleting shared files directory..."
         rm -rf "$SHARED_DIR"
     else
-        echo "The program will be uninstalled but you can still access all the files on ($SHARED_DIR)"
+        echo "The program will be uninstalled but you can still access all the files in ($SHARED_DIR)"
     fi
 else
-    echo "The program will be uninstalled but you can still access all the files on ($SHARED_DIR)"
+    echo "The program will be uninstalled but you can still access all the files in ($SHARED_DIR)"
 fi
 
 echo "Removing the virtual environment..."
@@ -41,8 +42,6 @@ rm -rf venv
 echo "Removing configuration files..."
 rm -f config.json password.txt
 
-cd ..
+echo "All files have been removed, you can now remove the directory you cloned with GitHub"
 
-echo "All files have been removed, you can now remove the directory you cloned with github"
-
-echo "CrappyNas has been succesfully uninstalled."
+echo "CrappyNas has been successfully uninstalled."
