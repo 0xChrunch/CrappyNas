@@ -43,7 +43,6 @@ rm -f config.json password.txt
 
 cd ..
 
-echo "Removing the CrappyNas application directory..."
-rm -rf CrappyNAS
+echo "All files have been removed, you can now remove the directory you cloned with github"
 
 echo "CrappyNas has been succesfully uninstalled."
