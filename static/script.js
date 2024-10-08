@@ -1,4 +1,4 @@
-// Function to update system stats
+//This is for the system stats
 function updateSystemStats() {
     fetch('/system_stats')
         .then(response => response.json())
@@ -10,25 +10,26 @@ function updateSystemStats() {
         .catch(error => console.error('Error fetching system stats:', error));
 }
 
-// Initial and periodic update of system stats
+// the system stats are updated every 5 seconds
 setInterval(updateSystemStats, 5000);
 updateSystemStats();
 
-// Variables for drag-and-drop functionality
+//for the drag & drop function
+//inizialing an empty array for the files to upload
 let dropArea = document.getElementById('drop-area');
 let filesToUpload = [];
 
-// Prevent default behaviors for drag-and-drop events
+//this is essential to let the browser know the page is listening for a file drop
 ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
     dropArea.addEventListener(eventName, preventDefaults, false);
 });
-
+//without this when you drop a file, it will be opened in the browser
 function preventDefaults(e) {
     e.preventDefault();
     e.stopPropagation();
 }
 
-// Highlight drop area when files are dragged over
+//style part to highlight and dehighlight the box when there is a file above
 ['dragenter', 'dragover'].forEach(eventName => {
     dropArea.addEventListener(eventName, () => dropArea.classList.add('highlight'), false);
 });
@@ -37,7 +38,7 @@ function preventDefaults(e) {
     dropArea.addEventListener(eventName, () => dropArea.classList.remove('highlight'), false);
 });
 
-// Handle files dropped into the drop area
+//file release control logic
 dropArea.addEventListener('drop', handleDrop, false);
 
 function handleDrop(e) {
@@ -45,20 +46,17 @@ function handleDrop(e) {
     let files = dt.files;
     handleFiles(files);
 }
-
-// Handle files selected via the file input
 document.querySelector('input[type="file"]').addEventListener('change', (e) => {
     handleFiles(e.target.files);
 });
 
-// Process and display selected files
+//display the selected files in the box, so you know what you are uploading
 function handleFiles(files) {
     files = [...files];
     filesToUpload.push(...files);
     files.forEach(previewFile);
 }
 
-// Display selected files in the gallery
 function previewFile(file) {
     let gallery = document.getElementById('gallery');
     let div = document.createElement('div');
@@ -67,7 +65,7 @@ function previewFile(file) {
     gallery.appendChild(div);
 }
 
-// Upload files when the upload button is clicked
+//upload logic, executed when pressing the upload button
 document.getElementById('upload-button').addEventListener('click', () => {
     if (filesToUpload.length === 0) {
         alert('No files selected');
@@ -126,7 +124,7 @@ document.getElementById('download-selected').addEventListener('click', () => {
         alert('Download failed');
     });
 });
-
+//file delete logic (multiple files selected)
 document.getElementById('delete-selected').addEventListener('click', () => {
     let selectedFiles = getSelectedFiles();
     if (selectedFiles.length === 0) {
@@ -157,7 +155,7 @@ document.getElementById('delete-selected').addEventListener('click', () => {
     });
 });
 
-// Single file delete button
+//file delete logic (single file)
 document.querySelectorAll('.delete-button').forEach(button => {
     button.addEventListener('click', (e) => {
         let filename = e.currentTarget.getAttribute('data-filename');
@@ -169,7 +167,7 @@ document.querySelectorAll('.delete-button').forEach(button => {
             path: currentPath,
             filename: filename
         };
-
+        //http post request 
         fetch(url, {
             method: 'POST',
             headers: {
@@ -186,7 +184,7 @@ document.querySelectorAll('.delete-button').forEach(button => {
     });
 });
 
-// Delete folder button
+//Delete folder button
 document.querySelectorAll('.delete-folder-button').forEach(button => {
     button.addEventListener('click', (e) => {
         let foldername = e.currentTarget.getAttribute('data-foldername');
@@ -215,7 +213,7 @@ document.querySelectorAll('.delete-folder-button').forEach(button => {
     });
 });
 
-// Function to get selected files
+//to get selected files you need checkboxes
 function getSelectedFiles() {
     let checkboxes = document.querySelectorAll('.select-file-checkbox');
     let selectedFiles = [];
